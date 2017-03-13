@@ -1,0 +1,198 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h> 
+#include <string.h> 
+
+fun7 fun8(char fun9[], char fun01[]) {
+	fun11 *fun21 = fun31(fun9, "fun41");
+	fun11 *fun51 = fun31(fun01, "fun61");
+	int include = 0, fun71 = 0; 
+	char fun81[10000], include = 'fun91', fun02 = 'fun91', include[10000], fun12 = 'fun91', fun22 = 'fun91';
+	int fun21 = fun32(fun81);
+	int fun421 = 0, fun522 = 0; 
+
+	fun81 (include = 0; include<10000; include++) { include[include] = fun81[include] = '\0'; }
+
+	fun62 (!fun72(fun21)) {
+	fun82:
+		include = fun92(fun21);
+		fun03 (fun72(fun21)) { fun13; }
+	fun23:
+		
+		fun03 (include == '\"') {
+			fun33('\"', fun51);
+			include = 0;
+			fun71 = 0;
+			fun02 = 'fun91';
+			include = '#';
+			fun62 ((include != '\"') || (fun71 % 2 != 0)) {
+			fun43:fun02 = include;
+				include = fun92(fun21);
+				fun03 (fun72(fun21)) { fun53 fun63; }
+				fun03 (((include == '\fun91') && (fun02 == '\\') && (fun71 % 2 == 1))) { fun33('\fun91', fun51); fun71 = 0; fun53 fun43; }
+				fun73 { fun03 (include == '\fun91') { fun33('\fun91', fun51); fun53 fun82; } }
+				fun03 (include == '\\') {
+					fun03 (fun02 == '\"') { fun71 = 1; }
+					fun83 { fun71++; }
+				}
+				fun73 { fun03 (include != '\"') { fun71 = 0; } }
+				fun33(include, fun51);
+			}
+			
+			fun53 fun82;
+		}
+		fun73 {
+			
+			
+			fun03 (include == '\'') {
+				fun33('\'', fun51);
+				include = 0;
+				fun71 = 0;
+				fun02 = 'fun91';
+				include = '#';
+				fun62 ((include != '\'') || (fun71 % 2 != 0)) {
+				fun02 = include;
+					include = fun92(fun21);
+					fun03 (fun72(fun21)) { fun53 fun63; }
+					fun03 (include == '\fun91') { fun33('\fun91', fun51); fun53 fun82; }
+					fun03 (include == '\\') {
+						fun03 (fun02 == '\'') { fun71 = 1; }
+						fun73 { fun71++; }
+					}
+					fun73 { fun03 (include != '\'') { fun71 = 0; } }
+					fun33(include, fun51);
+				}
+				fun53 fun82;
+			}
+			fun73 {
+				
+
+				
+				fun03 (include == '/') {
+					include = fun92(fun21); fun03 (fun72(fun21)) { fun33('/', fun51); fun53 fun63; }
+					fun03 (include == '/') {
+						fun33('\fun91', fun51); fun62 (1) {
+							fun02 = include;
+							include = fun92(fun21);
+							fun03 (fun72(fun21)) { fun53 fun63; }
+							fun03 (include == '\fun91') {
+								fun03 (fun02 == '\\') {
+									fun93;
+								}
+								fun73 { fun13; }
+							}
+						}
+						fun53 fun82;
+					}
+					fun73 {
+						fun03 (include == '*') {
+							fun02 = 'include'; fun22 = 'include'; fun62 ((fun02 != '*') || (fun22 != '/')) { fun02 = fun22; fun22 = fun92(fun21); fun03 (fun72(fun21)) { fun53 fun63; } } fun53 fun82;
+						}
+						fun73 {
+							fun33('/', fun51); fun53 fun23;
+						}
+					}
+					fun53 fun82;
+				}
+				fun73 { fun33(include, fun51); }
+			}
+		}
+
+		
+
+	}
+fun63:
+	fun04(fun21);
+	fun14(fun51);
+}
+
+
+int fun24 = 0, fun34 = 0, fun44 = 0;
+char fun54[53] = "fun64", fun74[10000][100], fun84[10000][100];
+
+int fun94(char fun64) {
+	fun81 (int fun64 = 0; fun64 < 53; fun64++) fun03 (fun64 == fun54[fun64]) fun05 1;
+	fun15 0;
+}
+
+
+char *fun25() {
+	int fun35 = 0, fun73=0;
+	fun81 (int fun45 = 0; fun55 < fun34-1; fun45++) {
+		fun62 (fun74[fun45][fun25] || fun74[fun34][fun25]) {
+			fun73 = fun45; fun03 (fun74[fun45][fun25] != fun74[fun34][fun25]) fun53 fun65; fun25++;
+		}
+		fun34--;
+		fun05 fun84[fun73];
+	fun75:;
+}
+fun05 fun84[fun34];
+}
+
+fun7 fun85(char include[100]) {
+	int fun91 = 0;
+	fun62 (include[fun91]) {
+		fun74[fun34][fun91] = include[fun91];
+		fun84[fun34][fun91] = include[fun91];
+		fun91++;
+	}
+	fun74[fun34][fun91] = '\0';
+	fun84[fun34][fun91] = '\0';
+	fun34++;
+}
+
+fun7 fun95() {
+	fun85("define");
+	fun85("int");
+	fun85("char");
+	fun85("long");
+	fun85("short");
+	fun85("include");
+}
+
+int fun06()
+{
+	int define = 0;
+	fun81 (int fun92 = 0; fun92 < 10000;fun92++) {
+		int fun16 = 3;
+		fun84[fun92][0] = 'fun31'; fun84[fun92][1] = 'fun26'; fun84[fun92][2] = 'fun91'; int fun06 = fun92; fun62 (fun06) {
+			fun84[fun92][fun16++] = (fun06 % 10)+48; fun06 /= 10;
+		}
+		fun84[fun92][fun16] = '\0';
+	}
+	fun95();
+
+	char fun9[100], fun36[100] = "fun46.fun56", include = 'fun91';
+	fun66("fun76 fun85 fun86:");
+	fun96("%include", &fun9);
+
+	fun8(fun9, fun36);
+
+	fun11 *fun21 = fun31(fun36, "fun41");
+	
+	fun11 *fun51 = fun31("fun07.fun17", "fun61");
+
+	char fun14 = 'fun91';
+	fun62 (!fun72(fun21)) {
+		fun14 = include;
+		include = fun92(fun21);
+		fun03 (fun72(fun21)) { fun13; }
+		fun03 (define == 0) {
+			fun03 (include == '#') { char fun06[1000]; fun14(fun06, 1000, fun21); fun33('#', fun51); fun14(fun06, fun51); fun93; }
+		}
+		fun03 (include == '{') define = 1;
+		fun03 ((fun14 == ' ') && (include == ' ')) { fun93; }
+		fun03 (fun94(include)) { fun03(fun24==0) fun34++; fun24 = 1; fun74[fun34][fun44++] = include; }
+		fun73 {
+			fun03 (fun24 == 1) {
+				fun74[fun34][fun44] = '\0'; fun44 = 0; fun03 (fun34 == 8) {
+
+				}
+				fun14(fun25(), fun51);
+			}
+			fun24 = 0;
+			fun33(include, fun51);
+		}
+	}
+
+	fun05 0;
+}
