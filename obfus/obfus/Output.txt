@@ -2,197 +2,218 @@
 #include <stdio.h> 
 #include <string.h> 
 
-fun7 fun8(char fun9[], char fun01[]) {
-	fun11 *fun21 = fun31(fun9, "fun41");
-	fun11 *fun51 = fun31(fun01, "fun61");
-	int include = 0, fun71 = 0; 
-	char fun81[10000], include = 'fun91', fun02 = 'fun91', include[10000], fun12 = 'fun91', fun22 = 'fun91';
-	int fun21 = fun32(fun81);
-	int fun421 = 0, fun522 = 0; 
+void fun82(char fun92[], char fun03[]) {
+	FILE *fun13 = fun23(fun92, "if");
+	FILE *fputs = fun33(fun03, "if");
+	int if = 0, fun43 = 0; 
+	char fun53[10000], if = 'fun63', goto = 'fun73', if[10000], goto = 'fun63', fun83 = 'fun63';
+	int goto = fun93(fun53);
+	int fun041 = 0, fun142 = 0; 
 
-	fun81 (include = 0; include<10000; include++) { include[include] = fun81[include] = '\0'; }
+	for (if = 0; if<10000; if++) { if[if] = fun53[if] = '\0'; }
 
-	fun62 (!fun72(fun21)) {
-	fun82:
-		include = fun92(fun21);
-		fun03 (fun72(fun21)) { fun13; }
-	fun23:
+	while (!fun24(fun13)) {
+	fun34:
+		if = fgetc(fun13);
+		if (fun24(fun13)) { break; }
+	fun44:
 		
-		fun03 (include == '\"') {
-			fun33('\"', fun51);
-			include = 0;
-			fun71 = 0;
-			fun02 = 'fun91';
-			include = '#';
-			fun62 ((include != '\"') || (fun71 % 2 != 0)) {
-			fun43:fun02 = include;
-				include = fun92(fun21);
-				fun03 (fun72(fun21)) { fun53 fun63; }
-				fun03 (((include == '\fun91') && (fun02 == '\\') && (fun71 % 2 == 1))) { fun33('\fun91', fun51); fun71 = 0; fun53 fun43; }
-				fun73 { fun03 (include == '\fun91') { fun33('\fun91', fun51); fun53 fun82; } }
-				fun03 (include == '\\') {
-					fun03 (fun02 == '\"') { fun71 = 1; }
-					fun83 { fun71++; }
+		if (if == '\"') {
+			fputc('\"', fputs);
+			if = 0;
+			fun43 = 0;
+			goto = 'fun63';
+			if = '#';
+			while ((if != '\"') || (fun43 % 2 != 0)) {
+			fun54:goto = if;
+				if = fgetc(fun13);
+				if (fun24(fun13)) { goto fun64; }
+				if (((if == '\fun63') && (goto == '\\') && (fun43 % 2 == 1))) { fputc('\fun63', fputs); fun43 = 0; goto fun54; }
+				else { if (if == '\fun63') { fputc('\fun63', fputs); goto fun34; } }
+				if (if == '\\') {
+					if (goto == '\"') { fun43 = 1; }
+					else { fun43++; }
 				}
-				fun73 { fun03 (include != '\"') { fun71 = 0; } }
-				fun33(include, fun51);
+				else { if (if != '\"') { fun43 = 0; } }
+				fputc(if, fputs);
 			}
 			
-			fun53 fun82;
+			goto fun34;
 		}
-		fun73 {
+		else {
 			
 			
-			fun03 (include == '\'') {
-				fun33('\'', fun51);
-				include = 0;
-				fun71 = 0;
-				fun02 = 'fun91';
-				include = '#';
-				fun62 ((include != '\'') || (fun71 % 2 != 0)) {
-				fun02 = include;
-					include = fun92(fun21);
-					fun03 (fun72(fun21)) { fun53 fun63; }
-					fun03 (include == '\fun91') { fun33('\fun91', fun51); fun53 fun82; }
-					fun03 (include == '\\') {
-						fun03 (fun02 == '\'') { fun71 = 1; }
-						fun73 { fun71++; }
+			if (if == '\'') {
+				fputc('\'', fputs);
+				if = 0;
+				fun43 = 0;
+				goto = 'fun63';
+				if = '#';
+				while ((if != '\'') || (fun43 % 2 != 0)) {
+				goto = if;
+					if = fgetc(fun13);
+					if (fun24(fun13)) { goto fun74; }
+					if (if == '\fun63') { fputc('\fun63', fputs); goto fun34; }
+					if (if == '\\') {
+						if (goto == '\'') { fun43 = 1; }
+						else { fun43++; }
 					}
-					fun73 { fun03 (include != '\'') { fun71 = 0; } }
-					fun33(include, fun51);
+					else { if (if != '\'') { fun43 = 0; } }
+					fputc(if, fputs);
 				}
-				fun53 fun82;
+				goto fun34;
 			}
-			fun73 {
+			else {
 				
 
 				
-				fun03 (include == '/') {
-					include = fun92(fun21); fun03 (fun72(fun21)) { fun33('/', fun51); fun53 fun63; }
-					fun03 (include == '/') {
-						fun33('\fun91', fun51); fun62 (1) {
-							fun02 = include;
-							include = fun92(fun21);
-							fun03 (fun72(fun21)) { fun53 fun63; }
-							fun03 (include == '\fun91') {
-								fun03 (fun02 == '\\') {
-									fun93;
+				if (if == '/') {
+					if = fgetc(fun13); if (fun24(fun13)) { fputc('/', fputs); goto fun64; }
+					if (if == '/') {
+						fputc('\fun63', fputs); while (1) {
+							goto = if;
+							if = fgetc(fun13);
+							if (fun24(fun13)) { goto fun64; }
+							if (if == '\fun63') {
+								if (goto == '\\') {
+									continue;
 								}
-								fun73 { fun13; }
+								else { break; }
 							}
 						}
-						fun53 fun82;
+						goto fun34;
 					}
-					fun73 {
-						fun03 (include == '*') {
-							fun02 = 'include'; fun22 = 'include'; fun62 ((fun02 != '*') || (fun22 != '/')) { fun02 = fun22; fun22 = fun92(fun21); fun03 (fun72(fun21)) { fun53 fun63; } } fun53 fun82;
+					else {
+						if (if == '*') {
+							goto = 'if'; fun83 = 'if'; while ((goto != '*') || (fun83 != '/')) { goto = fun83; fun83 = fgetc(fun13); if (fun24(fun13)) { goto fun64; } } goto fun34;
 						}
-						fun73 {
-							fun33('/', fun51); fun53 fun23;
+						else {
+							fputc('/', fputs); goto fun24;
 						}
 					}
-					fun53 fun82;
+					goto fun34;
 				}
-				fun73 { fun33(include, fun51); }
+				else { fputc(if, fputs); }
 			}
 		}
 
 		
 
 	}
-fun63:
-	fun04(fun21);
-	fun14(fun51);
+fun64:
+	fun84(fun13);
+	fun94(fputs);
 }
 
 
-int fun24 = 0, fun34 = 0, fun44 = 0;
-char fun54[53] = "fun64", fun74[10000][100], fun84[10000][100];
+int fun05 = 0, fun15 = 0, fun25 = 0;
+char fun35[53] = "fun45", fun55[10000][100], fun65[10000][100];
 
-int fun94(char fun64) {
-	fun81 (int fun64 = 0; fun64 < 53; fun64++) fun03 (fun64 == fun54[fun64]) fun05 1;
-	fun15 0;
+int fun75(char fun45) {
+	for (int fun45 = 0; fun45 < 53; fun45++) if (fun45 == fun35[fun45]) return 1;
+	return 0;
 }
 
 
-char *fun25() {
-	int fun35 = 0, fun73=0;
-	fun81 (int fun45 = 0; fun55 < fun34-1; fun45++) {
-		fun62 (fun74[fun45][fun25] || fun74[fun34][fun25]) {
-			fun73 = fun45; fun03 (fun74[fun45][fun25] != fun74[fun34][fun25]) fun53 fun65; fun25++;
+char *fun85() {
+	int if = 0, fun95=0;
+	for (int fun06 = 0; fun16 < fun15-1; fun06++) {
+		while (fun55[fun06][if] || fun55[fun15][if]) {
+			fun95 = fun06; if (fun55[fun06][if] != fun55[fun15][if]) goto fun26; if++;
 		}
-		fun34--;
-		fun05 fun84[fun73];
-	fun75:;
+		fun15--;
+		return fun65[fun95];
+	fun36:;
 }
-fun05 fun84[fun34];
+return fun65[fun15];
 }
 
-fun7 fun85(char include[100]) {
-	int fun91 = 0;
-	fun62 (include[fun91]) {
-		fun74[fun34][fun91] = include[fun91];
-		fun84[fun34][fun91] = include[fun91];
-		fun91++;
+void fun46(char if[100]) {
+	int fun63 = 0;
+	while (if[fun63]) {
+		fun55[fun15][fun63] = if[fun63];
+		fun65[fun15][fun63] = if[fun63];
+		fun63++;
 	}
-	fun74[fun34][fun91] = '\0';
-	fun84[fun34][fun91] = '\0';
-	fun34++;
+	fun55[fun15][fun63] = '\0';
+	fun65[fun15][fun63] = '\0';
+	fun15++;
 }
 
-fun7 fun95() {
-	fun85("define");
-	fun85("int");
-	fun85("char");
-	fun85("long");
-	fun85("short");
-	fun85("include");
+void fun56() {
+	fun46("int");
+	fun46("char");
+	fun46("long");
+	fun46("short");
+	fun46("for");
+	fun46("while");
+	fun46("do");
+	fun46("void");
+	fun46("printf");
+	fun46("scanf");
+	fun46("getch");
+	fun46("getchar");
+	fun46("return");
+	fun46("fgetc");
+	fun46("fputc");
+	fun46("fgets");
+	fun46("fgets");
+	fun46("FILE");
+	fun46("scanf");
+	fun46("else");
+	fun46("switch");
+	fun46("case");
+	fun46("elseif");
+	fun46("continue");
+	fun46("break");
+	fun46("goto");
+	fun46("if");
 }
 
-int fun06()
+int fun66()
 {
-	int define = 0;
-	fun81 (int fun92 = 0; fun92 < 10000;fun92++) {
-		int fun16 = 3;
-		fun84[fun92][0] = 'fun31'; fun84[fun92][1] = 'fun26'; fun84[fun92][2] = 'fun91'; int fun06 = fun92; fun62 (fun06) {
-			fun84[fun92][fun16++] = (fun06 % 10)+48; fun06 /= 10;
+	int fun76 = 0;
+	for (int fun86 = 0; fun96 < 10000;fun76++) {
+		int fun07 = 3;
+		fun65[fun76][0] = 'if'; fun65[fun76][1] = 'fun17'; fun65[fun76][2] = 'fun63'; int fun76 = fun76; while (fun76) {
+			fun65[fun76][fun07++] = (fun76 % 10)+48; fun76 /= 10;
 		}
-		fun84[fun92][fun16] = '\0';
+		fun65[fun76][fun07] = '\0';
 	}
-	fun95();
+	fun56();
 
-	char fun9[100], fun36[100] = "fun46.fun56", include = 'fun91';
-	fun66("fun76 fun85 fun86:");
-	fun96("%include", &fun9);
+	char fun92[100], fun27[100] = "fun37.fun47", if = 'fun63';
+	printf("fun57 fun95 fun67:");
+	scanf("%if", &fun92);
 
-	fun8(fun9, fun36);
+	fun82(fun92, fun27);
 
-	fun11 *fun21 = fun31(fun36, "fun41");
+	FILE *fun13 = fun23(fun27, "if");
 	
-	fun11 *fun51 = fun31("fun07.fun17", "fun61");
+	FILE *fputs = fun23("fun77.fun87", "if");
 
-	char fun14 = 'fun91';
-	fun62 (!fun72(fun21)) {
-		fun14 = include;
-		include = fun92(fun21);
-		fun03 (fun72(fun21)) { fun13; }
-		fun03 (define == 0) {
-			fun03 (include == '#') { char fun06[1000]; fun14(fun06, 1000, fun21); fun33('#', fun51); fun14(fun06, fun51); fun93; }
+	char break = 'fun63';
+	while (!fun24(fun13)) {
+		break = if;
+		if = fgetc(fun13);
+		if (fun24(fun13)) { break; }
+		if (fun76 == 0) {
+			if (if == '#') { char fun76[1000]; fgets(fun76, 1000, fun13); fputc('#', fputs); fgets(fun76, fputs); continue; }
 		}
-		fun03 (include == '{') define = 1;
-		fun03 ((fun14 == ' ') && (include == ' ')) { fun93; }
-		fun03 (fun94(include)) { fun03(fun24==0) fun34++; fun24 = 1; fun74[fun34][fun44++] = include; }
-		fun73 {
-			fun03 (fun24 == 1) {
-				fun74[fun34][fun44] = '\0'; fun44 = 0; fun03 (fun34 == 8) {
+		if (if == '{') fun76 = 1;
+		if ((break == ' ') && (if == ' ')) { continue; }
+		if (fun75(if)) { if(fun05==0) fun15++; fun05 = 1; fun55[fun15][fun25++] = if; }
+		else {
+			if (fun05 == 1) {
+				fun55[fun15][fun25] = '\0'; fun25 = 0; if (fun15 == 8) {
 
 				}
-				fun14(fun25(), fun51);
+				fgets(fun85(), fputs);
 			}
-			fun24 = 0;
-			fun33(include, fun51);
+			fun05 = 0;
+			fputc(if, fputs);
 		}
 	}
 
-	fun05 0;
+	return 0;
 }

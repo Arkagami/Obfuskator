@@ -141,12 +141,33 @@ void take(char s[100]) {
 }
 
 void launch() {
-	take("define");
 	take("int");
 	take("char");
 	take("long");
 	take("short");
-	take("include");
+	take("for");
+	take("while");
+	take("do");
+	take("void");
+	take("printf");
+	take("scanf");
+	take("getch");
+	take("getchar");
+	take("return");
+	take("fgetc");
+	take("fputc");
+	take("fgets");
+	take("fputs");
+	take("FILE");
+	take("scanf");
+	take("else");
+	take("switch");
+	take("case");
+	take("elseif");
+	take("continue");
+	take("break");
+	take("goto");
+	take("if");
 }
 
 int main()

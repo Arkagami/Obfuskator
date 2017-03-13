@@ -168,6 +168,8 @@ void launch() {
 	take("break");
 	take("goto");
 	take("if");
+	take("fopen");
+	take("fclose");
 }
 
 int main()
