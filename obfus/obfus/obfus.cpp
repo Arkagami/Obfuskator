@@ -50,7 +50,7 @@ void delComments(char inFile[], char outFile[]) {
 				lc = 'n';
 				c = '#';
 				while ((c != '\'') || (slkol % 2 != 0)) {
-				lc = c;
+					lc = c;
 					c = fgetc(fin);
 					if (feof(fin)) { goto tuda; }
 					if (c == '\n') { fputc('\n', fout); goto xyz; }
@@ -116,16 +116,17 @@ int isWord(char qwertyuiop) {
 
 
 char *changeWord() {
-	int e = 0, save=0;
-	for (int tyoh = 0; tyoh < countOfWords-1; tyoh++) {
+	int e = 0, save = 0;
+	for (int tyoh = 0; tyoh < countOfWords - 1; tyoh++) {
+		e = 0;
 		while (words[tyoh][e] || words[countOfWords][e]) {
 			save = tyoh; if (words[tyoh][e] != words[countOfWords][e]) goto met; e++;
 		}
 		countOfWords--;
 		return chang[save];
 	met:;
-}
-return chang[countOfWords];
+	}
+	return chang[countOfWords];
 }
 
 void take(char s[100]) {
@@ -169,7 +170,16 @@ void launch() {
 	take("goto");
 	take("if");
 	take("fopen");
-	take("fclose");
+	take("fclose");;
+	fun08("strlen");
+	fun08("strcpy");
+	fun08("strncpy");
+	fun08("strcmp");
+	fun08("strncmp");
+	fun08("strcat");
+	fun08("strncat");
+	fun08("feof");
+	fun08("EOF");
 }
 
 int main()
@@ -178,7 +188,7 @@ int main()
 	for (int rt = 0; rt < 10000;rt++) {
 		int zx = 3;
 		chang[rt][0] = 'f'; chang[rt][1] = 'u'; chang[rt][2] = 'n'; int ku = rt; while (ku) {
-			chang[rt][zx++] = (ku % 10)+48; ku /= 10;
+			chang[rt][zx++] = (ku % 10) + 48; ku /= 10;
 		}
 		chang[rt][zx] = '\0';
 	}
@@ -204,7 +214,7 @@ int main()
 		}
 		if (c == '{') def = 1;
 		if ((last == ' ') && (c == ' ')) { continue; }
-		if (isWord(c)) { if(word==0) countOfWords++; word = 1; words[countOfWords][whereWord++] = c; }
+		if (isWord(c)) { if (word == 0) countOfWords++; word = 1; words[countOfWords][whereWord++] = c; }
 		else {
 			if (word == 1) {
 				words[countOfWords][whereWord] = '\0';  whereWord = 0; if (countOfWords == 8) {

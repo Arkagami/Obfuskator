@@ -3,10 +3,10 @@
 #include <string.h> 
 
 
-int fun83 = 0, fun93 = 0; 
+int fun83 = 0, fun93 = 0;
 char fun04[10000], fun14 = 'n', fun24 = 'n', fun34[10000], fun44 = 'n', fun54 = 'n';
 int fun64 = strlen(fun04);
-int fun741 = 0, fun842 = 0; 
+int fun741 = 0, fun842 = 0;
 
 void fun94(char fun05[], char fun15[]) {
 	FILE *fun25 = fopen(fun05, "r");
@@ -19,7 +19,7 @@ void fun94(char fun05[], char fun15[]) {
 		fun14 = fgetc(fun25);
 		if (feof(fun25)) { break; }
 	fun65:
-		
+
 		if (fun14 == '\"') {
 			fputc('\"', fun35);
 			fun83 = 0;
@@ -39,12 +39,12 @@ void fun94(char fun05[], char fun15[]) {
 				else { if (fun14 != '\"') { fun93 = 0; } }
 				fputc(fun14, fun35);
 			}
-			
+
 			goto fun55;
 		}
 		else {
-			
-			
+
+
 			if (fun14 == '\'') {
 				fputc('\'', fout);
 				fun83 = 0;
@@ -52,7 +52,7 @@ void fun94(char fun05[], char fun15[]) {
 				fun24 = 'n';
 				fun14 = '#';
 				while ((fun14 != '\'') || (slkol % 2 != 0)) {
-				fun24 = fun14;
+					fun24 = fun14;
 					fun14 = fgetc(fun25);
 					if (feof(fun25)) { goto fun06; }
 					if (fun14 == '\n') { fputc('\n', fun35); goto fun55; }
@@ -66,9 +66,9 @@ void fun94(char fun05[], char fun15[]) {
 				goto fun55;
 			}
 			else {
-				
 
-				
+
+
 				if (fun14 == '/') {
 					fun14 = fgetc(fun25); if (feof(fun25)) { fputc('/', fun35); goto fun85; }
 					if (fun14 == '/') {
@@ -99,7 +99,7 @@ void fun94(char fun05[], char fun15[]) {
 			}
 		}
 
-		
+
 
 	}
 fun85:
@@ -118,8 +118,8 @@ int fun76(char fun86) {
 
 
 char *fun27() {
-	int fun37 = 0, fun47=0;
-	for (int fun57 = 0; fun67 < fun26-2; fun77++) {
+	int fun37 = 0, fun47 = 0;
+	for (int fun57 = 0; fun67 < fun26 - 2; fun77++) {
 		fun37 = 0;
 		while (fun56[fun57][fun37] || fun56[fun26][fun37]) {
 			fun47 = fun57; if (fun56[fun57][fun37] != fun56[fun26][fun37]) goto fun87; fun37++;
@@ -127,8 +127,8 @@ char *fun27() {
 		fun26--;
 		return fun66[fun47];
 	fun97:;
-}
-return fun66[fun26];
+	}
+	return fun66[fun26];
 }
 
 void fun08(char fun34[100]) {
@@ -190,7 +190,7 @@ int fun58()
 	for (int fun78 = 0; fun88 < 10000;fun98++) {
 		int fun09 = 3;
 		fun66[fun78][0] = 'f'; fun66[fun78][1] = 'u'; fun66[fun78][2] = 'n'; int fun19 = fun78; while (fun29) {
-			fun66[fun78][fun09++] = (fun39 % 10)+48; fun19 /= 10;
+			fun66[fun78][fun09++] = (fun39 % 10) + 48; fun19 /= 10;
 		}
 		fun66[fun78][fun09] = '\0';
 	}
@@ -203,8 +203,8 @@ int fun58()
 	fun94(fun05, fun59);
 
 	FILE *fun25 = fopen(fun69, "r");
-	
-	FILE *fun35 = fopen("Output.txt", "w");
+
+	FILE *fun35 = fopen("Output.c", "w");
 
 	char fun79 = 'n';
 	while (!feof(fun25)) {
@@ -214,7 +214,7 @@ int fun58()
 		if (feof(fun25)) { break; }
 
 
-		
+
 		if (fun14 == '\"') {
 			fputc('\"', fun35);
 			fun83 = 0;
@@ -234,11 +234,11 @@ int fun58()
 				else { if (fun14 != '\"') { fun93 = 0; } }
 				fputc(fun14, fun35);
 			}
-			
+
 			goto fun551;
 		}
 		else {
-			
+
 			if (fun14 == '\'') {
 				fputc('\'', fout);
 				fun83 = 0;
@@ -260,7 +260,7 @@ int fun58()
 				goto fun551;
 			}
 			else {
-				
+
 
 
 				if (fun68 == 0) {
@@ -271,7 +271,7 @@ int fun58()
 				if (fun76(fun14)) { fun16 = 1; fun56[fun26][fun36++] = fun14; }
 				else {
 					if (fun16 == 1) {
-						fun56[fun26][fun36] = '\0'; fun36 = 0; 
+						fun56[fun26][fun36] = '\0'; fun36 = 0;
 						fputs(fun27(), fun35);
 						fun26++;
 					}
@@ -281,9 +281,9 @@ int fun58()
 			}
 		}
 	}
-		fun851:
-			fclose(fun25);
-			fclose(fun35);
+fun851:
+	fclose(fun25);
+	fclose(fun35);
 
 	return 0;
 }
