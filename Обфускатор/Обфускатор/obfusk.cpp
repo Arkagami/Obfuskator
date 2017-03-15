@@ -132,6 +132,7 @@ char *changeWord() {
 }
 
 void take(char s[100]) {
+	countOfWords++;
 	int n = 0;
 	while (s[n]) {
 		words[countOfWords][n] = s[n];
@@ -140,7 +141,6 @@ void take(char s[100]) {
 	}
 	words[countOfWords][n] = '\0';
 	chang[countOfWords][n] = '\0';
-	countOfWords++;
 }
 
 void launch() {
@@ -264,7 +264,7 @@ int main()
 			else {
 				//.
 
-				if ((c == '\t') || (c == '\n')) goto then;
+				//if ((c == '\t') || (c == '\n')) goto then;
 				if (def == 0) {
 					if (c == '#') { char ss[1000]; fgets(ss, 1000, fin); fputc('#', fout); fputs(ss, fout); continue; }
 				}
