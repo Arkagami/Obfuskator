@@ -182,6 +182,7 @@ void launch() {
 	take("strncat");
 	take("feof");
 	take("EOF");
+	take("main");
 }
 
 int main()
