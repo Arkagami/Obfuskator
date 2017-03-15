@@ -1,0 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+fun83 fun93(char fun04[21]) {FILE *fun14 = fopen("pass.dat", "r");char fun24[21] = "n";fgets(fun24, 20, fun14);fclose(fun14);fun83 fun34 = 0;while (fun24[fun34]) {if (fun24[fun34] != fun04[fun34]) { return 0; }fun34++;}if (fun04[fun34] != '\0') { return 0; }else { return 1; }}fun83 fun44() {char fun54[21];printf("Input password (not more 20 simbols):");scanf("%s", &fun54);if (fun93(fun54)) { goto fun64; }else { printf("Wrong passsord!\n"); goto fun74; }fun64:printf("Hello, User!\n\n(c)Mixno Production O_^_O\n");fun74:_getch();return 0;}

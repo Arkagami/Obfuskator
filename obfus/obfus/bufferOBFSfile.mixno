@@ -2,285 +2,285 @@
 #include <stdio.h> 
 #include <string.h> 
 
-int i = 0, slkol = 0; 
-char cArray[10000], c = 'n', lc = 'n', s[10000], cc = 'n', ccc = 'n';
-int len = strlen(cArray);
-int kav1 = 0, kav2 = 0; 
+int fun9393 = 0, fun0404 = 0; 
+char fun9314[10000], fun9324 = 'n', fun9334 = 'n', fun9344[10000], fun9354 = 'n', fun9364 = 'n';
+int fun9374 = strlen(fun9314);
+int fun93841 = 0, fun93942 = 0; 
 
-void delComments(char inFile[], char outFile[]) {
-	FILE *fin = fopen(inFile, "r");
-	FILE *fout = fopen(outFile, "w");
+void fun9305(char fun9315[], char fun9325[]) {
+	FILE *fun9335 = fopen(fun9315, "r");
+	FILE *fun9345 = fopen(fun9325, "w");
 
-	for (i = 0; i<10000; i++) { s[i] = cArray[i] = '\0'; }
+	for (fun9393 = 0; fun9393<10000; fun9393++) { fun9344[fun9393] = fun9314[fun9393] = '\0'; }
 
-	while (!feof(fin)) {
-	xyz:
-		c = fgetc(fin);
-		if (feof(fin)) { break; }
-	eto:
+	while (!feof(fun9335)) {
+	fun9355:
+		fun9324 = fgetc(fun9335);
+		if (feof(fun9335)) { break; }
+	fun9365:
 		
-		if (c == '\"') {
-			fputc('\"', fout);
-			i = 0;
-			slkol = 0;
-			lc = 'n';
-			c = '#';
-			while ((c != '\"') || (slkol % 2 != 0)) {
-			repa:lc = c;
-				c = fgetc(fin);
-				if (feof(fin)) { goto tuda; }
-				if (((c == '\n') && (lc == '\\') && (slkol % 2 == 1))) { fputc('\n', fout); slkol = 0; goto repa; }
-				else { if (c == '\n') { fputc('\n', fout); goto xyz; } }
-				if (c == '\\') {
-					if (lc == '\"') { slkol = 1; }
-					else { slkol++; }
+		if (fun9324 == '\"') {
+			fputc('\"', fun9345);
+			fun9393 = 0;
+			fun9304 = 0;
+			fun9334 = 'n';
+			fun9324 = '#';
+			while ((fun9324 != '\"') || (fun9304 % 2 != 0)) {
+			fun9375:fun9334 = fun9324;
+				fun9324 = fgetc(fun9335);
+				if (feof(fun9335)) { goto fun9385; }
+				if (((fun9324 == '\n') && (fun9334 == '\\') && (fun9304 % 2 == 1))) { fputc('\n', fun9345); fun9304 = 0; goto fun9375; }
+				else { if (fun9324 == '\n') { fputc('\n', fun9345); goto fun9355; } }
+				if (fun9324 == '\\') {
+					if (fun9334 == '\"') { fun9304 = 1; }
+					else { fun9304++; }
 				}
-				else { if (c != '\"') { slkol = 0; } }
-				fputc(c, fout);
+				else { if (fun9324 != '\"') { fun9304 = 0; } }
+				fputc(fun9324, fun9345);
 			}
 			
-			goto xyz;
+			goto fun9355;
 		}
 		else {
 			
 			
-			if (c == '\'') {
+			if (fun9324 == '\'') {
 				fputc('\'', fout);
-				i = 0;
-				slkol = 0;
-				lc = 'n';
-				c = '#';
-				while ((c != '\'') || (slkol % 2 != 0)) {
-					lc = c;
-					c = fgetc(fin);
-					if (feof(fin)) { goto tuda; }
-					if (c == '\n') { fputc('\n', fout); goto xyz; }
-					if (c == '\\') {
-						if (lc == '\'') { slkol = 1; }
-						else { slkol++; }
+				fun9393 = 0;
+				fun9304 = 0;
+				fun9334 = 'n';
+				fun9324 = '#';
+				while ((fun9324 != '\'') || (slkol % 2 != 0)) {
+					fun9334 = fun9324;
+					fun9324 = fgetc(fun9335);
+					if (feof(fun9335)) { goto fun9395; }
+					if (fun9324 == '\n') { fputc('\n', fun9345); goto fun9355; }
+					if (fun9324 == '\\') {
+						if (fun9334 == '\'') { slkol = 1; }
+						else { fun9304++; }
 					}
-					else { if (c != '\'') { slkol = 0; } }
-					fputc(c, fout);
+					else { if (fun9324 != '\'') { slkol = 0; } }
+					fputc(fun9324, fun9345);
 				}
-				goto xyz;
+				goto fun9355;
 			}
 			else {
 				
 
 				
-				if (c == '/') {
-					c = fgetc(fin); if (feof(fin)) { fputc('/', fout); goto tuda; }
-					if (c == '/') {
-						fputc('\n', fout); while (1) {
-							lc = c;
-							c = fgetc(fin);
-							if (feof(fin)) { goto tuda; }
-							if (c == '\n') {
-								if (lc == '\\') {
+				if (fun9324 == '/') {
+					fun9324 = fgetc(fun9335); if (feof(fun9335)) { fputc('/', fun9345); goto fun9385; }
+					if (fun9324 == '/') {
+						fputc('\n', fun9345); while (1) {
+							fun9334 = fun9324;
+							fun9324 = fgetc(fun9335);
+							if (feof(fun9335)) { goto fun9385; }
+							if (fun9324 == '\n') {
+								if (fun9334 == '\\') {
 									continue;
 								}
 								else { break; }
 							}
 						}
-						goto xyz;
+						goto fun9355;
 					}
 					else {
-						if (c == '*') {
-							cc = 'i'; ccc = 'i'; while ((cc != '*') || (ccc != '/')) { cc = ccc; ccc = fgetc(fin); if (feof(fin)) { goto tuda; } } goto xyz;
+						if (fun9324 == '*') {
+							fun9354 = 'i'; fun9364 = 'i'; while ((fun9354 != '*') || (fun9364 != '/')) { fun9354 = fun9364; fun9364 = fgetc(fun9335); if (feof(fun9335)) { goto fun9385; } } goto fun9355;
 						}
 						else {
-							fputc('/', fout);  goto eto;
+							fputc('/', fun9345); goto fun9365;
 						}
 					}
-					goto xyz;
+					goto fun9355;
 				}
-				else { fputc(c, fout); }
+				else { fputc(fun9324, fun9345); }
 			}
 		}
 
 		
 
 	}
-tuda:
-	fclose(fin);
-	fclose(fout);
+fun9385:
+	fclose(fun9335);
+	fclose(fun9345);
 }
 
 
-int word = 0, countOfWords = 0, whereWord = 0;
-char iswords[53] = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM", words[10000][100], chang[10000][100];
+int fun9306 = 0, fun9316 = 0, fun9326 = 0;
+char fun9336[53] = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM", fun9346[10000][100], fun9356[10000][100];
 
-int isWord(char qwertyuiop) {
-	for (int qwerty = 0; qwerty < 53; qwerty++) if (qwertyuiop == iswords[qwerty]) return 1;
+int fun9366(char fun9376) {
+	for (int fun9386 = 0; fun9396 < 53; fun9386++) if (fun9376 == fun9336[fun9386]) return 1;
 	return 0;
 }
 
 
-char *changeWord() {
-	int e = 0, save = 0;
-	for (int tyoh = 0; tyoh < countOfWords - 1; tyoh++) {
-		e = 0;
-		while (words[tyoh][e] || words[countOfWords][e]) {
-			save = tyoh; if (words[tyoh][e] != words[countOfWords][e]) goto met; e++;
+char *fun9307() {
+	int fun9317 = 0, fun9327 = 0;
+	for (int fun9337 = 0; fun9347 < fun9316 - 1; fun9337++) {
+		fun9317 = 0;
+		while (fun9346[fun9337][fun9317] || fun9346[fun9316][fun9317]) {
+			fun9327 = fun9337; if (fun9346[fun9337][fun9317] != fun9346[fun9316][fun9317]) goto fun9357; fun9317++;
 		}
-		countOfWords--;
-		return chang[save];
-	met:;
+		fun9316--;
+		return fun9356[fun9327];
+	fun9367:;
 	}
-	return chang[countOfWords];
+	return fun9356[fun9316];
 }
 
-void take(char s[100]) {
-	int n = 0;
-	while (s[n]) {
-		words[countOfWords][n] = s[n];
-		chang[countOfWords][n] = s[n];
-		n++;
+void fun9377(char fun9344[100]) {
+	int fun9387 = 0;
+	while (fun9344[fun9397]) {
+		fun9346[fun9316][fun9387] = fun9344[fun9387];
+		fun9356[fun9316][fun9387] = fun9344[fun9387];
+		fun9387++;
 	}
-	words[countOfWords][n] = '\0';
-	chang[countOfWords][n] = '\0';
-	countOfWords++;
+	fun9346[fun9316][fun9387] = '\0';
+	fun9356[fun9316][fun9387] = '\0';
+	fun9316++;
 }
 
-void launch() {
-	take("int");
-	take("char");
-	take("long");
-	take("short");
-	take("for");
-	take("while");
-	take("do");
-	take("void");
-	take("printf");
-	take("scanf");
-	take("getch");
-	take("getchar");
-	take("return");
-	take("fgetc");
-	take("fputc");
-	take("fgets");
-	take("fputs");
-	take("FILE");
-	take("scanf");
-	take("else");
-	take("switch");
-	take("case");
-	take("elseif");
-	take("continue");
-	take("break");
-	take("goto");
-	take("if");
-	take("fopen");
-	take("fclose");;
-	take("strlen");
-	take("strcpy");
-	take("strncpy");
-	take("strcmp");
-	take("strncmp");
-	take("strcat");
-	take("strncat");
-	take("feof");
-	take("EOF");
+void fun9308() {
+	fun9377("int");
+	fun9377("char");
+	fun9377("long");
+	fun9377("short");
+	fun9377("for");
+	fun9377("while");
+	fun9377("do");
+	fun9377("void");
+	fun9377("printf");
+	fun9377("scanf");
+	fun9377("getch");
+	fun9377("getchar");
+	fun9377("return");
+	fun9377("fgetc");
+	fun9377("fputc");
+	fun9377("fgets");
+	fun9377("fputs");
+	fun9377("FILE");
+	fun9377("scanf");
+	fun9377("else");
+	fun9377("switch");
+	fun9377("case");
+	fun9377("elseif");
+	fun9377("continue");
+	fun9377("break");
+	fun9377("goto");
+	fun9377("if");
+	fun9377("fopen");
+	fun9377("fclose");;
+	fun9377("strlen");
+	fun9377("strcpy");
+	fun9377("strncpy");
+	fun9377("strcmp");
+	fun9377("strncmp");
+	fun9377("strcat");
+	fun9377("strncat");
+	fun9377("feof");
+	fun9377("EOF");
 }
 
-int main()
+int fun9318()
 {
-	int def = 0;
-	for (int rt = 0; rt < 10000;rt++) {
-		int zx = 3;
-		chang[rt][0] = 'f'; chang[rt][1] = 'u'; chang[rt][2] = 'n'; int ku = rt; while (ku) {
-			chang[rt][zx++] = (ku % 10) + 48; ku /= 10;
+	int fun9328 = 0;
+	for (int fun9338 = 0; fun9348 < 10000;fun9338++) {
+		int fun9358 = 3;
+		fun9356[fun9338][0] = 'f'; fun9356[fun9338][1] = 'u'; fun9356[fun9338][2] = 'n'; int fun9368 = fun9338; while (fun9378) {
+			fun9356[fun9338][fun9358++] = (fun9368 % 10) + 48; fun9368 /= 10;
 		}
-		chang[rt][zx] = '\0';
+		fun9356[fun9338][fun9358] = '\0';
 	}
-	launch();
+	fun9308();
 
-	char inFile[100], bufFile[100] = "bufferOBFSfile.mixno", c = 'n';
+	char fun9315[100], fun9388[100] = "bufferOBFSfile.mixno", fun9324 = 'n';
 	printf("Input file name:");
-	scanf("%s", &inFile);
+	scanf("%s", &fun9315);
 
-	delComments(inFile, bufFile);
+	fun9305(fun9315, fun9398);
 
-	FILE *fin = fopen(bufFile, "r");
+	FILE *fun9335 = fopen(fun9388, "r");
 	
-	FILE *fout = fopen("Output.c", "w");
+	FILE *fun9345 = fopen("Output.c", "w");
 
-	char last = 'n';
-	while (!feof(fin)) {
-	xyz1:
-		last = c;
-		c = fgetc(fin);
-		if (feof(fin)) { break; }
+	char fun9309 = 'n';
+	while (!feof(fun9335)) {
+	fun93551:
+		fun9319 = fun9324;
+		fun9324 = fgetc(fun9335);
+		if (feof(fun9335)) { break; }
 
 		
-		if (c == '\"') {
-			fputc('\"', fout);
-			i = 0;
-			slkol = 0;
-			lc = 'n';
-			c = '#';
-			while ((c != '\"') || (slkol % 2 != 0)) {
-			repa1:lc = c;
-				c = fgetc(fin);
-				if (feof(fin)) { goto tuda1; }
-				if (((c == '\n') && (lc == '\\') && (slkol % 2 == 1))) { fputc('\n', fout); slkol = 0; goto repa1; }
-				else { if (c == '\n') { fputc('\n', fout); goto xyz1; } }
-				if (c == '\\') {
-					if (lc == '\"') { slkol = 1; }
-					else { slkol++; }
+		if (fun9324 == '\"') {
+			fputc('\"', fun9345);
+			fun9393 = 0;
+			fun9304 = 0;
+			fun9334 = 'n';
+			fun9324 = '#';
+			while ((fun9324 != '\"') || (fun9304 % 2 != 0)) {
+			fun93751:fun9334 = fun9324;
+				fun9324 = fgetc(fun9335);
+				if (feof(fun9335)) { goto fun93851; }
+				if (((fun9324 == '\n') && (fun9334 == '\\') && (fun9304 % 2 == 1))) { fputc('\n', fun9345); fun9304 = 0; goto fun93751; }
+				else { if (fun9324 == '\n') { fputc('\n', fun9345); goto fun93551; } }
+				if (fun9324 == '\\') {
+					if (fun9334 == '\"') { fun9304 = 1; }
+					else { fun9304++; }
 				}
-				else { if (c != '\"') { slkol = 0; } }
-				fputc(c, fout);
+				else { if (fun9324 != '\"') { fun9304 = 0; } }
+				fputc(fun9324, fun9345);
 			}
 			
-			goto xyz1;
+			goto fun93551;
 		}
 		else {
 			
 			
-			if (c == '\'') {
+			if (fun9324 == '\'') {
 				fputc('\'', fout);
-				i = 0;
-				slkol = 0;
-				lc = 'n';
-				c = '#';
-				while ((c != '\'') || (slkol % 2 != 0)) {
-					lc = c;
-					c = fgetc(fin);
-					if (feof(fin)) { goto tuda1; }
-					if (c == '\n') { fputc('\n', fout); goto xyz1; }
-					if (c == '\\') {
-						if (lc == '\'') { slkol = 1; }
-						else { slkol++; }
+				fun9393 = 0;
+				fun9304 = 0;
+				fun9334 = 'n';
+				fun9324 = '#';
+				while ((fun9324 != '\'') || (slkol % 2 != 0)) {
+					fun9334 = fun9324;
+					fun9324 = fgetc(fun9335);
+					if (feof(fun9335)) { goto fun93851; }
+					if (fun9324 == '\n') { fputc('\n', fun9345); goto fun93551; }
+					if (fun9324 == '\\') {
+						if (fun9334 == '\'') { slkol = 1; }
+						else { fun9304++; }
 					}
-					else { if (c != '\'') { slkol = 0; } }
-					fputc(c, fout);
+					else { if (fun9324 != '\'') { slkol = 0; } }
+					fputc(fun9324, fun9345);
 				}
-				goto xyz1;
+				goto fun93551;
 			}
 			else {
 				
 
-				if (def == 0) {
-					if (c == '#') { char ss[1000]; fgets(ss, 1000, fin); fputc('#', fout); fputs(ss, fout); continue; }
+				if (fun9328 == 0) {
+					if (fun9324 == '#') { char fun9329[1000]; fgets(fun9339, 1000, fun9335); fputc('#', fun9345); fputs(fun9329, fun9345); continue; }
 				}
-				if (c == '{') def = 1;
-				if ((last == ' ') && (c == ' ')) { continue; }
-				if (isWord(c)) { if (word == 0) countOfWords++; word = 1; words[countOfWords][whereWord++] = c; }
+				if (fun9324 == '{') fun9328 = 1;
+				if ((fun9309 == ' ') && (fun9324 == ' ')) { continue; }
+				if (fun9366(fun9324)) { if (fun9306 == 0) fun9316++; fun9306 = 1; fun9346[fun9316][fun9326++] = fun9324; }
 				else {
-					if (word == 1) {
-						words[countOfWords][whereWord] = '\0';  whereWord = 0; if (countOfWords == 8) {
+					if (fun9306 == 1) {
+						fun9346[fun9316][fun9326] = '\0'; fun9326 = 0; if (fun9316 == 8) {
 
 						}
-						fputs(changeWord(), fout);
+						fputs(fun9307(), fun9345);
 					}
-					word = 0;
-					fputc(c, fout);
+					fun9306 = 0;
+					fputc(fun9324, fun9345);
 				}
 			}
 		}
 	}
-tuda1:;
+fun93851:;
 
 	return 0;
 }
