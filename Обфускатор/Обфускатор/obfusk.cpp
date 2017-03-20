@@ -3,7 +3,7 @@
 #include <string.h> 
 #include <locale.h>
 
-int i = 0, slkol = 0; //slkol - количество слешей, идущих подряд
+int i = 0, slkol = 0; //slkol - количество слешей, идущих подряд 
 char cArray[10000], c = 'n', lc = 'n', s[10000], cc = 'n', ccc = 'n';
 int len = strlen(cArray);
 int kav1 = 0, kav2 = 0; // Кавычки. 1 - '_', 2 - "_"; 
@@ -12,108 +12,120 @@ void delComments(char inFile[], char outFile[]) {
 	FILE *fin = fopen(inFile, "r");
 	FILE *fout = fopen(outFile, "w");
 
-	for (i = 0; i<10000; i++) { s[i] = cArray[i] = '\0'; }
+for (i = 0; i<10000; i++) { s[i] = cArray[i] = '\0'; }
 
-	while (!feof(fin)) {
-	xyz:
-		c = fgetc(fin);
-		if (feof(fin)) { break; }
-	eto:
-		//кавычки типа "_" 
-		if (c == '\"') {
-			fputc('\"', fout);
+while (!feof(fin)) {
+xyz:
+	c = fgetc(fin);
+	if (feof(fin)) { break; }
+eto:
+	//кавычки типа "_" 
+	if (c == '\"') {
+		fputc('\"', fout);
+		i = 0;
+		slkol = 0;
+		lc = 'n';
+		c = '#';
+		while ((c != '\"') || (slkol % 2 != 0)) {
+		repa:lc = c;
+			c = fgetc(fin);
+			if (feof(fin)) { goto tuda; }
+			if (((c == '\n') && (lc == '\\') && (slkol % 2 == 1))) { fputc('\n', fout); slkol = 0; goto repa; }
+			else { if (c == '\n') { fputc('\n', fout); goto xyz; } }
+			if (c == '\\') {
+				if (lc == '\"') { slkol = 1; }
+				else { slkol++; }
+			}
+			else { if (c != '\"') { if ((lc == '\"') && (slkol % 2 == 1)) { fputc(c, fout); goto xyz;
+			} else { slkol = 0; } } }
+			fputc(c, fout);
+		}
+		//fputc('#', fout); 
+		goto xyz;
+	}
+	else {
+	uidi:;
+		//TODO Уйти в кулинарный 
+		//кавычки типа '_' 
+		if (c == '\'') {
+			fputc('\'', fout);
 			i = 0;
 			slkol = 0;
 			lc = 'n';
 			c = '#';
-			while ((c != '\"') || (slkol % 2 != 0)) {
-			repa:lc = c;
+			while ((c != '\'') || (slkol % 2 != 0)) {
+			repet:lc = c;
 				c = fgetc(fin);
 				if (feof(fin)) { goto tuda; }
-				if (((c == '\n') && (lc == '\\') && (slkol % 2 == 1))) { fputc('\n', fout); slkol = 0; goto repa; }
-				else { if (c == '\n') { fputc('\n', fout); goto xyz; } }
+				if (c == '\n') { fputc('\n', fout); goto xyz; }
 				if (c == '\\') {
-					if (lc == '\"') { slkol = 1; }
+					if (lc == '\'') { slkol = 1; }
 					else { slkol++; }
 				}
-				else { if (c != '\"') { slkol = 0; } }
+				else { if (c != '\'') { if ((lc == '\'') && (slkol % 2 == 1)) { fputc(c, fout); goto xyz;
+				} else { slkol = 0; } } }
 				fputc(c, fout);
 			}
-			//fputc('#', fout); 
 			goto xyz;
 		}
 		else {
-			//TODO Уйти в кулинарный 
-			//кавычки типа '_' 
-			if (c == '\'') {
-				fputc('\'', fout);
-				i = 0;
-				slkol = 0;
-				lc = 'n';
-				c = '#';
-				while ((c != '\'') || (slkol % 2 != 0)) {
-					lc = c;
-					c = fgetc(fin);
-					if (feof(fin)) { goto tuda; }
-					if (c == '\n') { fputc('\n', fout); goto xyz; }
-					if (c == '\\') {
-						if (lc == '\'') { slkol = 1; }
-						else { slkol++; }
-					}
-					else { if (c != '\'') { slkol = 0; } }
-					fputc(c, fout);
-				}
-				goto xyz;
-			}
-			else {
-				//. 
+			//. 
 
-				//Комментарии 
+			//Комментарии 
+			if (c == '/') {
+				c = fgetc(fin); if (feof(fin)) { fputc('/', fout); goto tuda; }
 				if (c == '/') {
-					c = fgetc(fin); if (feof(fin)) { fputc('/', fout); goto tuda; }
-					if (c == '/') {
-						fputc('\n', fout); while (1) {
-							lc = c;
-							c = fgetc(fin);
-							if (feof(fin)) { goto tuda; }
-							if (c == '\n') {
-								if (lc == '\\') {
-									continue;
-								}
-								else { break; }
+					fputc('\n', fout); while (1) {
+						lc = c;
+						c = fgetc(fin);
+						if (feof(fin)) { goto tuda; }
+						if (c == '\n') {
+							if (lc == '\\') {
+								continue;
 							}
-						}
-						goto xyz;
-					}
-					else {
-						if (c == '*') {
-							cc = 'i'; ccc = 'i'; while ((cc != '*') || (ccc != '/')) { cc = ccc; ccc = fgetc(fin); if (feof(fin)) { goto tuda; } } goto xyz;
-						}
-						else {
-							fputc('/', fout);  goto eto;
+							else { break; }
 						}
 					}
 					goto xyz;
 				}
-				else { fputc(c, fout); }
+				else {
+					if (c == '*') {
+						cc = 'i'; ccc = 'i'; while ((cc != '*') || (ccc != '/')) { cc = ccc; ccc = fgetc(fin); if (feof(fin)) { goto tuda; } } goto xyz;
+					}
+					else {
+						fputc('/', fout); goto eto;
+					}
+				}
+				goto xyz;
 			}
+			else { fputc(c, fout); }
 		}
-
-		//----------------------Комментарии 
-
 	}
+
+	//----------------------Комментарии 
+
+}
 tuda:
 	fclose(fin);
 	fclose(fout);
 }
 
 
-int word = 0, countOfWords = -1, whereWord = 0;
+int word = 0, countOfWords = -1, whereWord = 0, lc_al=0;
 char iswords[53] = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM", words[10000][100], chang[10000][100];
 //Проверяет символ на принадлежность к английскому алфавиту 
 int isWord(char qwertyuiop) {
 	for (int qwerty = 0; qwerty < 53; qwerty++) if (qwertyuiop == iswords[qwerty]) return 1;
 	return 0;
+}
+
+int sravWord(char s1[1000], char s2[1000]) {
+	int tt = 0;
+	while (s1[tt] || s2[tt]) {
+		if (s1[tt] != s2[tt]) return 0;
+		tt++;
+	}
+	return 1;
 }
 
 
@@ -183,6 +195,8 @@ void launch() {
 	take("feof");
 	take("EOF");
 	take("main");
+	take("setlocale");
+	take("LC_ALL");
 }
 
 int main()
@@ -222,8 +236,7 @@ int main()
 			i = 0;
 			slkol = 0;
 			lc = 'n';
-			c = '#';
-			while ((c != '\"') || (slkol % 2 != 0)) {
+			do {
 			repa1:lc = c;
 				c = fgetc(fin);
 				if (feof(fin)) { goto tuda1; }
@@ -233,13 +246,15 @@ int main()
 					if (lc == '\"') { slkol = 1; }
 					else { slkol++; }
 				}
-				else { if (c != '\"') { slkol = 0; } }
+				else { if (c != '\"') { if ((lc == '\"') && (slkol % 2 == 1)) { fputc(c, fout); goto xyz1;
+				} else { slkol = 0; } } }
 				fputc(c, fout);
-			}
+			} while ((c != '\"') || (slkol % 2 != 0));
 			//fputc('#', fout); 
 			goto xyz1;
 		}
 		else {
+		uidi1:;
 			//TODO Уйти в кулинарный 
 			//кавычки типа '_' 
 			if (c == '\'') {
@@ -247,9 +262,8 @@ int main()
 				i = 0;
 				slkol = 0;
 				lc = 'n';
-				c = '#';
-				while ((c != '\'') || (slkol % 2 != 0)) {
-					lc = c;
+				do {
+				repet1:lc = c;
 					c = fgetc(fin);
 					if (feof(fin)) { goto tuda1; }
 					if (c == '\n') { fputc('\n', fout); goto xyz1; }
@@ -257,14 +271,17 @@ int main()
 						if (lc == '\'') { slkol = 1; }
 						else { slkol++; }
 					}
-					else { if (c != '\'') { slkol = 0; } }
+					else { if (c != '\'') { if ((lc=='\'')&&(slkol % 2 == 1)) { fputc(c, fout); goto xyz1;
+					} else { slkol = 0; } } }
 					fputc(c, fout);
-				}
+				} while ((c != '\'') || (slkol % 2 != 0));
 				goto xyz1;
 			}
 			else {
-				//.
+				//. 
+			open:
 
+				
 				//if ((c == '\t') || (c == '\n')) goto then;
 				if (def == 0) {
 					if (c == '#') { char ss[1000]; fgets(ss, 1000, fin); fputc('#', fout); fputs(ss, fout); continue; }
@@ -274,10 +291,25 @@ int main()
 				if (isWord(c)) { if (word == 0) countOfWords++; word = 1; words[countOfWords][whereWord++] = c; }
 				else {
 					if (word == 1) {
-						words[countOfWords][whereWord] = '\0';  whereWord = 0; if (countOfWords == 8) {
-
+						words[countOfWords][whereWord] = '\0';  whereWord = 0;
+						if (lc_al == 1) {
+						LCALL: while (c != 'L') { c = fgetc(fin); if (c != 'L') fputc(c, fout);
 						}
+						countOfWords++;
+						words[countOfWords][0] = c;
+						for(int sd=1;sd<6;sd++) {
+							c = fgetc(fin);
+							words[countOfWords][sd] = c; 
+						}
+						words[countOfWords][6] = '\0';
+						lc_al = 2;
+						}
+						if (sravWord(words[countOfWords], "setlocale")) lc_al = 1;
 						fputs(changeWord(), fout);
+						if (lc_al == 1) { goto LCALL; }
+						if (lc_al == 2) {
+							lc_al = 0; goto xyz1;
+						}
 					}
 					word = 0;
 					fputc(c, fout);
