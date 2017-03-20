@@ -292,23 +292,14 @@ int main()
 				else {
 					if (word == 1) {
 						words[countOfWords][whereWord] = '\0';  whereWord = 0;
-						if (lc_al == 1) {
-						LCALL: while (c != 'L') { c = fgetc(fin); if (c != 'L') fputc(c, fout);
-						}
-						countOfWords++;
-						words[countOfWords][0] = c;
-						for(int sd=1;sd<6;sd++) {
-							c = fgetc(fin);
-							words[countOfWords][sd] = c; 
-						}
-						words[countOfWords][6] = '\0';
-						lc_al = 2;
-						}
 						if (sravWord(words[countOfWords], "setlocale")) lc_al = 1;
 						fputs(changeWord(), fout);
-						if (lc_al == 1) { goto LCALL; }
-						if (lc_al == 2) {
-							lc_al = 0; goto xyz1;
+						if (lc_al == 1) {
+							fputc(c, fout);
+							while (c != ';') { c = fgetc(fin); fputc(c, fout); }
+							lc_al = 0;
+							word = 0;
+							goto xyz1;
 						}
 					}
 					word = 0;
