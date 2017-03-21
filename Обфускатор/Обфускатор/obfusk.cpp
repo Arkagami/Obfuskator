@@ -36,8 +36,17 @@ eto:
 				if (lc == '\"') { slkol = 1; }
 				else { slkol++; }
 			}
-			else { if (c != '\"') { if ((lc == '\"') && (slkol % 2 == 1)) { fputc(c, fout); goto xyz;
-			} else { slkol = 0; } } }
+			else {
+				if (c == '\"') {
+					if (lc == '\"') {
+						if (slkol % 2 == 1) {
+							fputc(c, fout); goto xyz;
+						}
+						else { slkol = 0; }
+					}
+				}
+				else { slkol = 0; }
+			}
 			fputc(c, fout);
 		}
 		//fputc('#', fout); 
@@ -62,8 +71,17 @@ eto:
 					if (lc == '\'') { slkol = 1; }
 					else { slkol++; }
 				}
-				else { if (c != '\'') { if ((lc == '\'') && (slkol % 2 == 1)) { fputc(c, fout); goto xyz;
-				} else { slkol = 0; } } }
+				else {
+					if (c == '\'') {
+						if (lc == '\'') {
+							if (slkol % 2 == 1) {
+								fputc(c, fout); goto xyz;
+							}
+							else { slkol = 0; }
+						}
+					}
+					else { slkol = 0; }
+				}
 				fputc(c, fout);
 			}
 			goto xyz;
@@ -236,7 +254,8 @@ int main()
 			i = 0;
 			slkol = 0;
 			lc = 'n';
-			do {
+			c = '#';
+			while ((c != '\"') || (slkol % 2 != 0)) {
 			repa1:lc = c;
 				c = fgetc(fin);
 				if (feof(fin)) { goto tuda1; }
@@ -246,10 +265,19 @@ int main()
 					if (lc == '\"') { slkol = 1; }
 					else { slkol++; }
 				}
-				else { if (c != '\"') { if ((lc == '\"') && (slkol % 2 == 1)) { fputc(c, fout); goto xyz1;
-				} else { slkol = 0; } } }
+				else {
+					if (c == '\"') {
+						if (lc == '\"') {
+							if (slkol % 2 == 1) {
+								fputc(c, fout); goto xyz1;
+							}
+							else { slkol = 0; }
+						}
+					}
+					else { slkol = 0; }
+				}
 				fputc(c, fout);
-			} while ((c != '\"') || (slkol % 2 != 0));
+			}
 			//fputc('#', fout); 
 			goto xyz1;
 		}
@@ -262,8 +290,9 @@ int main()
 				i = 0;
 				slkol = 0;
 				lc = 'n';
-				do {
-				repet1:lc = c;
+				c = '#';
+				while ((c != '\'') || (slkol % 2 != 0)) {
+				repet:lc = c;
 					c = fgetc(fin);
 					if (feof(fin)) { goto tuda1; }
 					if (c == '\n') { fputc('\n', fout); goto xyz1; }
@@ -271,10 +300,19 @@ int main()
 						if (lc == '\'') { slkol = 1; }
 						else { slkol++; }
 					}
-					else { if (c != '\'') { if ((lc=='\'')&&(slkol % 2 == 1)) { fputc(c, fout); goto xyz1;
-					} else { slkol = 0; } } }
+					else {
+						if (c == '\'') {
+							if (lc == '\'') {
+								if (slkol % 2 == 1) {
+									fputc(c, fout); goto xyz1;
+								}
+								else { slkol = 0; }
+							}
+						}
+						else { slkol = 0; }
+					}
 					fputc(c, fout);
-				} while ((c != '\'') || (slkol % 2 != 0));
+				}
 				goto xyz1;
 			}
 			else {
