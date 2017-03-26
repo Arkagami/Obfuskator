@@ -192,7 +192,6 @@ void launch() {
 	take("fgets");
 	take("fputs");
 	take("FILE");
-	take("scanf");
 	take("else");
 	take("switch");
 	take("case");
@@ -215,11 +214,15 @@ void launch() {
 	take("main");
 	take("setlocale");
 	take("LC_ALL");
+	take("abort");
+	take("fscanf");
+	take("perror");
 }
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
+	int neNado = 0;
 	int def = 0;
 	for (int rt = 0; rt < 10000;rt++) {
 		int zx = 3;
@@ -243,8 +246,8 @@ int main()
 	char last = 'n';
 	while (!feof(fin)) {
 	xyz1:
-		last = c;
 		then:
+		last = c;
 		c = fgetc(fin);
 		if (feof(fin)) { break; }
 
@@ -320,7 +323,9 @@ int main()
 			open:
 
 				
-				//if ((c == '\t') || (c == '\n')) goto then;
+				
+
+				//if ((c == '\t') || (c == '\n')) goto xyz1;
 				if (def == 0) {
 					if (c == '#') { char ss[1000]; fgets(ss, 1000, fin); fputc('#', fout); fputs(ss, fout); continue; }
 				}
@@ -331,7 +336,18 @@ int main()
 					if (word == 1) {
 						words[countOfWords][whereWord] = '\0';  whereWord = 0;
 						if (sravWord(words[countOfWords], "setlocale")) lc_al = 1;
+
+						if ((neNado == 1) && (sravWord(words[countOfWords], "s"))) {
+							fputc('s', fout);
+							countOfWords--;
+							goto nado;
+						}
+						neNado = 0;
+
+						if ((sravWord(words[countOfWords], "fscanf")) || (sravWord(words[countOfWords], "fopen")) || (sravWord(words[countOfWords], "scanf")) || (sravWord(words[countOfWords], "gets")) || (sravWord(words[countOfWords], "fputs")) || (sravWord(words[countOfWords], "getch"))) neNado = 1;
 						fputs(changeWord(), fout);
+
+
 						if (lc_al == 1) {
 							fputc(c, fout);
 							while (c != ';') { c = fgetc(fin); fputc(c, fout); }
@@ -339,6 +355,7 @@ int main()
 							word = 0;
 							goto xyz1;
 						}
+					nado:;
 					}
 					word = 0;
 					fputc(c, fout);
