@@ -325,7 +325,7 @@ int main()
 				
 				
 
-				//if ((c == '\t') || (c == '\n')) goto xyz1;
+				if ((c == '\t') || (c == '\n')) if (word == 0) goto xyz1; else goto ifelse;
 				if (def == 0) {
 					if (c == '#') { char ss[1000]; fgets(ss, 1000, fin); fputc('#', fout); fputs(ss, fout); continue; }
 				}
@@ -334,6 +334,7 @@ int main()
 				if (isWord(c)) { if (word == 0) countOfWords++; word = 1; words[countOfWords][whereWord++] = c; }
 				else {
 					if (word == 1) {
+					ifelse:
 						words[countOfWords][whereWord] = '\0';  whereWord = 0;
 						if (sravWord(words[countOfWords], "setlocale")) lc_al = 1;
 
@@ -344,7 +345,12 @@ int main()
 						}
 						neNado = 0;
 
-						if ((sravWord(words[countOfWords], "fscanf")) || (sravWord(words[countOfWords], "fopen")) || (sravWord(words[countOfWords], "scanf")) || (sravWord(words[countOfWords], "gets")) || (sravWord(words[countOfWords], "fputs")) || (sravWord(words[countOfWords], "getch"))) neNado = 1;
+						if ((sravWord(words[countOfWords], "fscanf")) || 
+							(sravWord(words[countOfWords], "fopen")) || 
+							(sravWord(words[countOfWords], "scanf")) || 
+							(sravWord(words[countOfWords], "gets")) || 
+							(sravWord(words[countOfWords], "fputs")) || 
+							(sravWord(words[countOfWords], "fgetch"))) neNado = 1;
 						fputs(changeWord(), fout);
 
 
@@ -358,7 +364,7 @@ int main()
 					nado:;
 					}
 					word = 0;
-					fputc(c, fout);
+					if ((c != '\t') || (c = '\n')) fputc(c, fout);
 				}
 			}
 		}
