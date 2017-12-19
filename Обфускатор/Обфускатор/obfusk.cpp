@@ -233,9 +233,9 @@ int main()
 	}
 	launch();
 
-	char inFile[100], bufFile[100] = "bufferOBFSfile.mixno", c = 'n';
-	printf("Input file name:");
-	scanf("%s", &inFile);
+	char inFile[100] = "in10.c", bufFile[100] = "bufferOBFSfile.mixno", c = 'n';
+	//printf("Input file name:");
+	//scanf("%s", &inFile);
 
 	delComments(inFile, bufFile);
 
@@ -370,6 +370,9 @@ int main()
 		}
 	}
 tuda1:;
+
+	fclose(fin);
+	fclose(fout);
 
 	return 0;
 }
