@@ -111,7 +111,8 @@ int word = 0, countOfWords = 0, whereWord = 0;
 char iswords[53] = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM", words[10000][100], chang[10000][100];
 //Проверяет символ на принадлежность к английскому алфавиту 
 int isWord(char qwertyuiop) {
-  for (int qwerty = 0; qwerty < 53; qwerty++) if (qwertyuiop == iswords[qwerty]) return 1;
+  for (int qwerty = 0; qwerty < 53; qwerty++)
+    if (qwertyuiop == iswords[qwerty]) return 1;
   return 0;
 }
 
@@ -195,9 +196,9 @@ int main()
   }
   launch();
 
-  char inFile[100], bufFile[100] = "bufferOBFSfile.mixno", c = 'n';
-  printf("Input file name:");
-  scanf("%s", &inFile);
+  char inFile[100] = "in2.c", bufFile[100] = "bufferOBFSfile.mixno", c = 'n';
+  //printf("Input file name:");
+  //scanf("%s", &inFile);
 
   delComments(inFile, bufFile);
 
@@ -281,6 +282,7 @@ int main()
     }
   }
 tuda1:;
-
+  fclose(fin);
+  fclose(fout);
   return 0;
 }
