@@ -7,7 +7,7 @@ char cArray[10000], c = 'n', lc = 'n', s[10000], cc = 'n', ccc = 'n';
 int len = strlen(cArray);
 int kav1 = 0, kav2 = 0; // Кавычки. 1 - '_', 2 - "_"; 
 
-void delComments(char inFile[], char outFile[]) {
+/*void delComments(char inFile[], char outFile[]) {
   FILE *fin = fopen(inFile, "r");
   FILE *fout = fopen(outFile, "w");
 
@@ -104,15 +104,15 @@ void delComments(char inFile[], char outFile[]) {
 tuda:
   fclose(fin);
   fclose(fout);
-}
+}*/
 
 
 int word = 0, countOfWords = 0, whereWord = 0;
-char iswords[53] = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM", words[10000][100], chang[10000][100];
+char words[10000][100], chang[10000][100];
 //Проверяет символ на принадлежность к английскому алфавиту 
 int isWord(char qwertyuiop) {
-  for (int qwerty = 0; qwerty < 53; qwerty++)
-    if (qwertyuiop == iswords[qwerty]) return 1;
+  if (((qwertyuiop > 64) && (qwertyuiop < 91)) || ((qwertyuiop > 96) && (qwertyuiop < 123)))
+    return 1;
   return 0;
 }
 
@@ -200,7 +200,7 @@ int main()
   //printf("Input file name:");
   //scanf("%s", &inFile);
 
-  delComments(inFile, bufFile);
+  //delComments(inFile, bufFile);
 
   FILE *fin = fopen(bufFile, "r");
   //FILE *fout = fopen(inFile, "w");
@@ -212,7 +212,7 @@ int main()
     last = c;
     c = fgetc(fin);
     if (feof(fin)) { break; }
-
+  eto:
     //кавычки типа "_" 
     if (c == '\"') {
       fputc('\"', fout);
@@ -260,23 +260,54 @@ int main()
         goto xyz1;
       }
       else {
-        //.
+        //. 
 
-        if (def == 0) {
-          if (c == '#') { char ss[1000]; fgets(ss, 1000, fin); fputc('#', fout); fputs(ss, fout); continue; }
-        }
-        if (c == '{') def = 1;
-        if ((last == ' ') && (c == ' ')) { continue; }
-        if (isWord(c)) { if (word == 0) countOfWords++; word = 1; words[countOfWords][whereWord++] = c; }
-        else {
-          if (word == 1) {
-            words[countOfWords][whereWord] = '\0';  whereWord = 0; if (countOfWords == 8) {
-
+        //Комментарии 
+        if (c == '/') {
+          c = fgetc(fin); if (feof(fin)) { fputc('/', fout); goto tuda1; }
+          if (c == '/') {
+            fputc('\n', fout); 
+            while (1) {
+              lc = c;
+              c = fgetc(fin);
+              if (feof(fin)) { goto tuda1; }
+              if (c == '\n') {
+                if (lc == '\\') {
+                  continue;
+                }
+                else { break; }
+              }
             }
-            fputs(changeWord(), fout);
+            goto xyz1;
           }
-          word = 0;
-          fputc(c, fout);
+          else {
+            if (c == '*') {
+              cc = 'i'; ccc = 'i'; while ((cc != '*') || (ccc != '/')) { cc = ccc; ccc = fgetc(fin); if (feof(fin)) { goto tuda1; } } goto xyz1;
+            }
+            else {
+              fputc('/', fout);  goto eto;
+            }
+          }
+          goto xyz1;
+        }
+        else {
+
+          if (def == 0) {
+            if (c == '#') { char ss[1000]; fgets(ss, 1000, fin); fputc('#', fout); fputs(ss, fout); continue; }
+          }
+          if (c == '{') def = 1;
+          if ((last == ' ') && (c == ' ')) { continue; }
+          if (isWord(c)) { if (word == 0) countOfWords++; word = 1; words[countOfWords][whereWord++] = c; }
+          else {
+            if (word == 1) {
+              words[countOfWords][whereWord] = '\0';  whereWord = 0; if (countOfWords == 8) {
+
+              }
+              fputs(changeWord(), fout);
+            }
+            word = 0;
+            fputc(c, fout);
+          }
         }
       }
     }
