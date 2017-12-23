@@ -137,10 +137,13 @@ void take(char s[100]) {
     words[countOfWords][n] = s[n];
     chang[countOfWords][n] = s[n];
     n++;
+    if (s[n + 1] == '\0') {
+      words[countOfWords][n] = '\0';
+      chang[countOfWords][n] = '\0';
+      countOfWords++;
+      return;
+    }
   }
-  words[countOfWords][n] = '\0';
-  chang[countOfWords][n] = '\0';
-  countOfWords++;
 }
 
 void launch() {
