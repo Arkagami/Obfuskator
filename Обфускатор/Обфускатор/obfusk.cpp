@@ -37,6 +37,9 @@ void take(char s[100]) {
     words[countOfWords][n] = s[n];
     chang[countOfWords][n] = s[n];
     n++;
+    words[countOfWords][n] = s[n];
+    chang[countOfWords][n] = s[n];
+    n++;
   }
   words[countOfWords][n] = '\0';
   chang[countOfWords][n] = '\0';
@@ -98,9 +101,26 @@ void launch() {
 int main()
 {
   int def = 0;
-  for (int rt = 0; rt < 10000;rt++) {
-    int zx = 3;
-    chang[rt][0] = 'f'; chang[rt][1] = 'u'; chang[rt][2] = 'n'; int ku = rt; while (ku) {
+  int zx = 3;
+  int ku;
+  for (int rt = 0; rt < 10000;rt++)
+  {
+    chang[rt][0] = 'f';
+    chang[rt][1] = 'u';
+    chang[rt][2] = 'n';
+    ku = rt;
+    while (ku)
+    {
+      chang[rt][zx++] = (ku % 10) + 48; ku /= 10;
+    }
+    chang[rt][zx] = '\0';
+    rt++;
+    chang[rt][0] = 'f';
+    chang[rt][1] = 'u';
+    chang[rt][2] = 'n';
+    ku = rt;
+    while (ku)
+    {
       chang[rt][zx++] = (ku % 10) + 48; ku /= 10;
     }
     chang[rt][zx] = '\0';
