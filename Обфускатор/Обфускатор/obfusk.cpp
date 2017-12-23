@@ -31,12 +31,9 @@ char *changeWord() {
   return chang[countOfWords];
 }
 
-void take(char s[100]) {
+void take(char s[1000]) {
   int n = 0;
   while (s[n]) {
-    words[countOfWords][n] = s[n];
-    chang[countOfWords][n] = s[n];
-    n++;
     words[countOfWords][n] = s[n];
     chang[countOfWords][n] = s[n];
     n++;
