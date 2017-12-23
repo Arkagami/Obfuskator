@@ -119,7 +119,7 @@ int isWord(char qwertyuiop) {
 
 char *changeWord() {
   int e = 0, save = 0;
-  for (int tyoh = 0; tyoh < countOfWords - 1; tyoh++) {
+  for (int tyoh = 0; tyoh < countOfWords; tyoh++) {
     e = 0;
     while (words[tyoh][e] || words[countOfWords][e]) {
       save = tyoh; if (words[tyoh][e] != words[countOfWords][e]) goto met; e++;
@@ -159,6 +159,8 @@ void launch() {
   take("return");
   take("fgetc");
   take("fputc");
+  take("getc");
+  take("putc");
   take("fgets");
   take("fputs");
   take("FILE");
@@ -182,6 +184,15 @@ void launch() {
   take("strncat");
   take("feof");
   take("EOF");
+  take("unsigned");
+  take("isdigit");
+  take("main");
+  take("double");
+  take("sin");
+  take("cos");
+  take("pow");
+  take("powl");
+  take("pi");
 }
 
 int main()
