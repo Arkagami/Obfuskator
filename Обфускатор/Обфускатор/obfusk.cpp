@@ -101,7 +101,7 @@ void launch() {
 int main()
 {
   int def = 0;
-  int zx = 3;
+  int zx;
   int ku;
   for (int rt = 0; rt < 10000;rt++)
   {
@@ -109,6 +109,7 @@ int main()
     chang[rt][1] = 'u';
     chang[rt][2] = 'n';
     ku = rt;
+    zx = 3;
     while (ku)
     {
       chang[rt][zx++] = (ku % 10) + 48; ku /= 10;
@@ -119,6 +120,7 @@ int main()
     chang[rt][1] = 'u';
     chang[rt][2] = 'n';
     ku = rt;
+    zx = 3;
     while (ku)
     {
       chang[rt][zx++] = (ku % 10) + 48; ku /= 10;
